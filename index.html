@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baritone Bedrock — the Baritone pathfinding bot for Minecraft Bedrock</title>
+  <meta name="description" content="Baritone Bedrock is the Baritone pathfinding bot ported to Minecraft Bedrock Edition for Windows. Walk, mine, build, farm, explore and fly with an elytra, automatically, from chat commands.">
+  <meta name="theme-color" content="#0b1016">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Baritone Bedrock">
+  <meta property="og:description" content="The Baritone pathfinding bot, ported to Minecraft Bedrock for Windows. One DLL, every Baritone command.">
+  <meta property="og:image" content="https://miked06.github.io/bartione-bedrock-website/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Baritone Bedrock home">
+        <img src="assets/img/favicon.svg" alt="" width="28" height="28">
+        <span>Baritone <b>Bedrock</b></span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#demo">Pathfinder</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#commands">Commands</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/miked06/baritone-bedrock/tree/main/docs">Docs</a>
+      </nav>
+      <a class="btn btn--ghost btn--sm nav__gh" href="https://github.com/miked06/baritone-bedrock">
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="top">
+      <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__fade"></div>
+      <div class="hero__content">
+        <p class="eyebrow reveal"><span class="dot"></span> v1.0.0 · Minecraft Bedrock 26.52 · Windows</p>
+        <h1 class="hero__title reveal">
+          <span class="pixel">Baritone</span>
+          <span class="pixel hero__title-accent">Bedrock</span>
+        </h1>
+        <p class="hero__lead reveal">
+          The legendary <a href="https://github.com/cabaletta/baritone">Baritone</a> pathfinding bot, rebuilt in C++ for Minecraft Bedrock.
+          Walk, mine, build, farm, explore and fly — automatically, from a chat command.
+        </p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--primary" href="https://github.com/miked06/baritone-bedrock/releases/latest/download/BaritoneBedrock.dll">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M11 3h2v9.17l3.59-3.58L18 10l-6 6-6-6 1.41-1.41L11 12.17V3zM5 19h14v2H5z"/></svg>
+            Download the DLL
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/miked06/baritone-bedrock">View on GitHub</a>
+        </div>
+        <div class="hero__chat reveal" aria-label="Example command">
+          <span class="chat-prefix">&gt;</span> <span class="typed" id="hero-typed">#goto diamond_ore</span><span class="caret"></span>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#stats" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============================== STATS ============================== -->
+    <section class="stats" id="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal"><b data-count="250">0</b><span>+ Baritone settings</span></div>
+        <div class="stat reveal"><b data-count="60">0</b><span>+ chat commands</span></div>
+        <div class="stat reveal"><b data-count="38">0</b><span>offline tests</span></div>
+        <div class="stat reveal"><b data-count="1">0</b><span>DLL. No packs, no server mod</span></div>
+      </div>
+    </section>
+
+    <!-- ============================== FEATURES ============================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">Everything Baritone does</p>
+          <h2>One bot. Every way to get there.</h2>
+          <p class="section__lead">The pathfinder, the movements, the processes and the settings follow Baritone's Java code closely — if you know Baritone, you already know this.</p>
+        </header>
+
+        <div class="features">
+          <article class="card reveal" style="--accent: var(--red)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 13h3v-3h3V7h3V4h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/><rect x="12" y="2" width="3" height="3" fill="currentColor"/></svg></div>
+            <h3>Pathfinding</h3>
+            <p>A* over the real world with Baritone's moves: sprint, jump, parkour, pillar, fall, ladders, swimming — breaking and placing blocks on the way. Long trips run in segments through a long-distance chunk cache.</p>
+            <code>#goto 1000 64 -300</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--cyan)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13l6-6M8 4l4 4M9 3l2-1 3 3-1 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></div>
+            <h3>Mining</h3>
+            <p>Finds ores in loaded chunks and in the cache, mines them and picks up the drops. No ore in sight? It goes down to the right level and branch-mines — in the overworld and the nether.</p>
+            <code>#mine 32 diamond</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--violet)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14V7l6-4 6 4v7H2zM6 14v-4h4v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/></svg></div>
+            <h3>Building</h3>
+            <p>Builds <code class="inline">.mcstructure</code>, <code class="inline">.schem</code>, <code class="inline">.litematic</code> and <code class="inline">.schematic</code> files, with stairs, logs and slabs facing the right way. Boxes, walls, spheres and cylinders with <code class="inline">#sel</code>.</p>
+            <code>#build castle.schem</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--gold)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 9l6-1 2-6 2 6 4 1-4 2-2 4-2-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <h3>Elytra flight</h3>
+            <p>Plans a 3D flight, steers by simulating the elytra physics, fires rockets when it needs speed, swaps a worn elytra and lands safely on solid ground.</p>
+            <code>#elytra 5000 -2000</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--green)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V6M8 9C8 6 5 5 3 5c0 3 2 4 5 4zM8 7c0-3 3-4 5-4 0 3-2 4-5 4z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Farming</h3>
+            <p>Harvests ripe crops, replants, uses bone meal on young ones and picks everything up — wheat, carrots, potatoes, beetroot, nether wart, cocoa.</p>
+            <code>#farm 32</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--blue)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2h6v3H9v2l4 6H3l4-6V5H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <h3>Water bucket clutch</h3>
+            <p>Falls of up to 20 blocks are planned with a water bucket: the water goes down a split second before the ground, and back into the bucket after.</p>
+            <code>allowWaterBucketFall</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--orange)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="5" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="11" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7l2 2" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Follow &amp; explore</h3>
+            <p>Follow players or mobs, explore unseen chunks in a spiral, tunnel, go to the surface, walk to what you click up to 512 blocks away.</p>
+            <code>#follow player Steve</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--pink)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v4M8 11v4M1 8h4M11 8h4" stroke="currentColor" stroke-width="2"/><rect x="6" y="6" width="4" height="4" fill="currentColor"/></svg></div>
+            <h3>Waypoints</h3>
+            <p>Per-world waypoints with tags, plus automatic <code class="inline">death</code> and <code class="inline">bed</code> waypoints. <code class="inline">#home</code> is always one command away.</p>
+            <code>#wp goto death</code>
+          </article>
+          <article class="card reveal" style="--accent: var(--lime)">
+            <div class="card__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3h12v10H2zM2 6h12" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Drawn in the world</h3>
+            <p>The path, the goal, the blocks to break and place and your selections are rendered with the game's own renderer, in Baritone's colors.</p>
+            <code>renderPath true</code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PATHFINDER DEMO ============================== -->
+    <section class="section section--alt" id="demo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">Try it</p>
+          <h2>Watch the pathfinder think</h2>
+          <p class="section__lead">A tiny version of Baritone's A* running in your browser, with its real cost model in game ticks. Drag the <span class="tag tag--steve">player</span> and the <span class="tag tag--goal">goal</span>, paint terrain, and see how the cost of breaking blocks or swimming changes the route.</p>
+        </header>
+
+        <div class="demo reveal">
+          <div class="demo__toolbar" role="toolbar" aria-label="Pathfinder tools">
+            <div class="demo__group" role="radiogroup" aria-label="Brush">
+              <button class="tool is-active" data-brush="stone" aria-pressed="true"><i class="sw sw--stone"></i>Stone</button>
+              <button class="tool" data-brush="water" aria-pressed="false"><i class="sw sw--water"></i>Water</button>
+              <button class="tool" data-brush="lava" aria-pressed="false"><i class="sw sw--lava"></i>Lava</button>
+              <button class="tool" data-brush="grass" aria-pressed="false"><i class="sw sw--grass"></i>Erase</button>
+            </div>
+            <div class="demo__group">
+              <label class="switch"><input type="checkbox" id="opt-break" checked><span></span>allowBreak</label>
+              <label class="switch"><input type="checkbox" id="opt-diag" checked><span></span>Diagonals</label>
+            </div>
+            <div class="demo__group">
+              <button class="btn btn--sm btn--ghost" id="demo-random">New terrain</button>
+              <button class="btn btn--sm btn--primary" id="demo-run">Find path</button>
+            </div>
+          </div>
+          <div class="demo__stage">
+            <canvas id="demo-canvas" aria-label="Pathfinding grid. Drag the player and the goal, paint terrain with the brush."></canvas>
+          </div>
+          <div class="demo__stats" aria-live="polite">
+            <div><span>Nodes explored</span><b id="st-nodes">—</b></div>
+            <div><span>Path length</span><b id="st-length">—</b></div>
+            <div><span>Estimated time</span><b id="st-time">—</b></div>
+            <div><span>Blocks to break</span><b id="st-break">—</b></div>
+          </div>
+          <p class="demo__legend">
+            <span><i class="lg lg--open"></i>open set</span>
+            <span><i class="lg lg--closed"></i>explored</span>
+            <span><i class="lg lg--best"></i>best so far</span>
+            <span><i class="lg lg--path"></i>path</span>
+            <span><i class="lg lg--break"></i>to break</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== GALLERY ============================== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">In game</p>
+          <h2>See it in action</h2>
+          <p class="section__lead">Real gameplay, captured on Minecraft Bedrock 26.52.</p>
+        </header>
+        <div class="gallery" id="gallery-grid">
+          <!-- filled by assets/js/main.js from the MEDIA list -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COMMANDS ============================== -->
+    <section class="section section--alt" id="commands">
+      <div class="container commands">
+        <div class="commands__text reveal">
+          <p class="kicker">Chat control</p>
+          <h2>Just type it in the chat</h2>
+          <p class="section__lead">Commands start with <code class="inline">#</code>, run locally and are never sent to the server. They are Baritone's commands, with the same names and arguments.</p>
+          <ul class="cmdlist">
+            <li><code>#goto x y z</code><span>walk anywhere, or to the closest block of a type</span></li>
+            <li><code>#mine [n] &lt;block&gt;</code><span>mine ores and pick up the drops</span></li>
+            <li><code>#build &lt;file&gt;</code><span>build a schematic</span></li>
+            <li><code>#sel hsphere glass</code><span>hollow sphere in a selection</span></li>
+            <li><code>#follow player &lt;name&gt;</code><span>follow a player</span></li>
+            <li><code>#elytra x z</code><span>fly there with fireworks</span></li>
+            <li><code>#set &lt;setting&gt; &lt;value&gt;</code><span>any Baritone setting</span></li>
+          </ul>
+          <a class="link-arrow" href="https://github.com/miked06/baritone-bedrock/blob/main/docs/COMMANDS.md">All commands</a>
+        </div>
+        <div class="mc-chat reveal" aria-hidden="true">
+          <div class="mc-chat__log" id="chat-log"></div>
+          <div class="mc-chat__input"><span id="chat-input"></span><span class="caret"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== HOW IT WORKS ============================== -->
+    <section class="section" id="how">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">Under the hood</p>
+          <h2>Plays like a player would</h2>
+          <p class="section__lead">The DLL lives inside the game. It reads the world, thinks on its own thread, and acts only through the inputs a player has — so the server just sees someone playing.</p>
+        </header>
+        <ol class="pipeline">
+          <li class="reveal"><b>1</b><h3>Read</h3><p>Every tick, the chunks around you are copied into a snapshot. Chunks you leave are packed into a 2-bit long-distance cache saved on disk.</p></li>
+          <li class="reveal"><b>2</b><h3>Think</h3><p>Baritone's A* plans on a worker thread, over the snapshot and the cache, with costs measured in game ticks.</p></li>
+          <li class="reveal"><b>3</b><h3>Move</h3><p>Each movement decides which keys to hold, where to look and which block to break or place — like Baritone's <code class="inline">PathExecutor</code>.</p></li>
+          <li class="reveal"><b>4</b><h3>Act</h3><p>Simulated key presses, mouse clicks and camera rotation, and the game's own block-breaking calls. No packets crafted by hand.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== INSTALL ============================== -->
+    <section class="section section--alt" id="install">
+      <div class="container install">
+        <header class="section__head reveal">
+          <p class="kicker">Get started</p>
+          <h2>Running in two minutes</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__n">1</span>
+            <div>
+              <h3>Download</h3>
+              <p>Get <code class="inline">BaritoneBedrock.dll</code> from the <a href="https://github.com/miked06/baritone-bedrock/releases/latest">latest release</a>, or <a href="https://github.com/miked06/baritone-bedrock/blob/main/docs/BUILDING.md">build it yourself</a>.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">2</span>
+            <div>
+              <h3>Open a world</h3>
+              <p>Start Minecraft Bedrock <b>26.52</b> and turn off <i>"Pause game when focus is lost"</i> in the settings.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">3</span>
+            <div>
+              <h3>Inject</h3>
+              <p>Inject the DLL into <code class="inline">Minecraft.Windows.exe</code> with any DLL injector. The chat says <code class="inline">[Baritone]</code> when it is ready.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">4</span>
+            <div>
+              <h3>Play</h3>
+              <p>Type <code class="inline">#help</code> in the chat. <code class="inline">#stop</code> stops everything, <code class="inline">#unload</code> removes the bot.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="callout reveal">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          <p>Bots can be against the rules of multiplayer servers. Baritone Bedrock is meant for singleplayer worlds and servers that allow it. Use it at your own risk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <header class="section__head reveal">
+          <p class="kicker">FAQ</p>
+          <h2>Questions</h2>
+        </header>
+        <details class="reveal">
+          <summary>Which Minecraft versions are supported?</summary>
+          <p>Minecraft Bedrock <b>26.52</b> for Windows (package 1.26.5203.0). The DLL reads the game's memory directly, so each game update needs updated signatures and offsets — the <a href="https://github.com/miked06/baritone-bedrock/blob/main/docs/DEVELOPMENT.md#updating-to-a-new-game-version">development guide</a> explains how, and contributions are very welcome.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is it the same as Baritone for Java?</summary>
+          <p>It is a port of Baritone's Java code: same commands, same settings, same algorithms and costs. A few things work differently on Bedrock (for example the elytra cannot predict terrain from the world seed) — they are all listed in <a href="https://github.com/miked06/baritone-bedrock/blob/main/docs/PARITY.md">PARITY.md</a>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Does it need a resource pack, a behavior pack or a server plugin?</summary>
+          <p>No. It is a single DLL injected into the game. It works in singleplayer and, as a client-side bot, on servers.</p>
+        </details>
+        <details class="reveal">
+          <summary>My antivirus flags the DLL. Is it safe?</summary>
+          <p>DLL injectors and injected DLLs are often flagged because of how they work. The code is open source: you can read it and <a href="https://github.com/miked06/baritone-bedrock/blob/main/docs/BUILDING.md">build the DLL yourself</a> with Visual Studio.</p>
+        </details>
+        <details class="reveal">
+          <summary>Does it work on consoles, phones or the Java Edition?</summary>
+          <p>Only Minecraft Bedrock for Windows (x64). For Java Edition, use the original <a href="https://github.com/cabaletta/baritone">Baritone</a>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Something does not work. Where do I report it?</summary>
+          <p>Check the <a href="https://github.com/miked06/baritone-bedrock/blob/main/docs/TROUBLESHOOTING.md">troubleshooting guide</a>, then <a href="https://github.com/miked06/baritone-bedrock/issues/new/choose">open an issue</a> with your <code class="inline">log.txt</code>.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================== CTA ============================== -->
+    <section class="cta">
+      <div class="container cta__inner reveal">
+        <h2 class="pixel">Let the bot do the walking.</h2>
+        <p>Free and open source under the LGPL-3.0, like Baritone.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://github.com/miked06/baritone-bedrock/releases/latest">Download v1.0.0</a>
+          <a class="btn btn--ghost" href="https://github.com/miked06/baritone-bedrock">Star on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="brand" href="#top"><img src="assets/img/favicon.svg" alt="" width="24" height="24"><span>Baritone <b>Bedrock</b></span></a>
+        <p class="muted">A port of <a href="https://github.com/cabaletta/baritone">cabaletta/baritone</a>. LGPL-3.0.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="https://github.com/miked06/baritone-bedrock">Source</a>
+        <a href="https://github.com/miked06/baritone-bedrock/tree/main/docs">Documentation</a>
+        <a href="https://github.com/miked06/baritone-bedrock/releases">Releases</a>
+        <a href="https://github.com/miked06/baritone-bedrock/issues">Issues</a>
+      </nav>
+      <p class="footer__legal muted">Not affiliated with Mojang Studios or Microsoft. "Minecraft" is a trademark of Mojang Synergies AB.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <div class="lightbox__body"></div>
+  </div>
+
+  <script src="assets/js/hero.js" defer></script>
+  <script src="assets/js/pathfinder.js" defer></script>
+  <script src="assets/js/media.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
