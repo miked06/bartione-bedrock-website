@@ -1,5 +1,5 @@
 /* Gallery content, shown by main.js. Media files are in /media.
-   Captured on Minecraft Bedrock 26.52 (development build after 1.0.0: thick path lines). */
+   Captured on Minecraft Bedrock 26.52 with Baritone Bedrock 1.1.0 (thick path lines). */
 window.BARITONE_MEDIA = [
   {
     type: "video",
